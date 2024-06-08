@@ -1,0 +1,88 @@
+.admin-container {
+  padding: 20px;
+}
+
+.search-container {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.permission-form,
+.log-table {
+  margin-bottom: 20px;
+}
+
+.permission-table,
+.log-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.permission-table th,
+.log-table th,
+.permission-table td,
+.log-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.permission-table th,
+.log-table th {
+  background-color: #f2f2f2;
+}
+
+.permission-table tr:hover,
+.log-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.pagination button {
+  padding: 8px 12px;
+  margin: 0 5px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  cursor: pointer;
+}
+
+.pagination button.active {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.pagination button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.permission-form input[type="text"],
+.permission-form select {
+  width: 200px;
+  padding: 8px;
+  margin-right: 10px;
+}
+
+.permission-form button {
+  padding: 8px 12px;
+  border: none;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+}
+
+.permission-form button:hover {
+  background-color: #0056b3;
+}
+
+.avatar {
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+}
