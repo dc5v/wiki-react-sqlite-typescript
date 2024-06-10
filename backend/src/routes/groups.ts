@@ -3,8 +3,7 @@ import { open } from 'sqlite';
 import sqlite3 from 'sqlite3';
 import { authenticateToken, authorizePermission } from '../auth';
 import { idGen } from '../utils/idGen';
-import { AuthenticatedRequest } from "../utils/types";
-import 'dotenv/config';
+import { AuthenticatedRequest } from '../types';
 
 const router = express.Router();
 

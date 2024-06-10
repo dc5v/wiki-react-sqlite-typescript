@@ -4,8 +4,7 @@ import { open } from 'sqlite';
 import sqlite3 from 'sqlite3';
 import { generateToken } from '../auth';
 import { idGen } from '../utils/idGen';
-import { AuthenticatedRequest } from '../utils/types';
-import 'dotenv/config';
+import { AuthenticatedRequest, User } from '../types';
 
 const router = express.Router();
 
@@ -19,6 +18,11 @@ const getUserInfo = async (url: string, headers: any) =>
 {
   const response = await axios.get(url, { headers });
   return response.data;
+};
+
+const isAdmin = (email: string, provider: string): boolean =>
+{
+  return email === process.env.ADMIN_EMAIL && provider === process.env.ADMIN_PROVIDER;
 };
 
 router.get('/google', (req: Request, res: Response) =>
@@ -103,7 +107,17 @@ router.get('/callback', async (req: Request, res: Response) =>
     if (!user)
     {
       const userId = await idGen();
-      await db.run('INSERT INTO users (id, email, provider, provider_id, joined) VALUES (?, ?, ?, ?, ?)', [userId, userInfo.email, state, userInfo.id, new Date().toISOString()]);
+      await db.run('INSERT INTO users (id, email, provider, provider_id, joined, canView, canEdit, canDelete, canCreate) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)', [
+        userId,
+        userInfo.email,
+        state,
+        userInfo.id,
+        new Date().toISOString(),
+        isAdmin(userInfo.email, state) ? 1 : 0,
+        isAdmin(userInfo.email, state) ? 1 : 0,
+        isAdmin(userInfo.email, state) ? 1 : 0,
+        isAdmin(userInfo.email, state) ? 1 : 0,
+      ]);
       user = await db.get('SELECT * FROM users WHERE email = ? AND provider = ?', [userInfo.email, state]);
     }
 

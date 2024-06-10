@@ -11,7 +11,7 @@
   },
   "include": [
     "src",
-    "src/utils/types.ts",
+    "src/types.ts",
     "src/auth.ts",
     "tests/setup.ts"
   ]

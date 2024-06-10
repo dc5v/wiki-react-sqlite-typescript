@@ -1,8 +1,7 @@
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
 import { Response, NextFunction } from 'express';
-import { AuthenticatedRequest, User } from './utils/types';
-import 'dotenv/config';
+import { AuthenticatedRequest, User } from './types';
 
 const JWT_SECRET = process.env.JWT_SECRET!;
 

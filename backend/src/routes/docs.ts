@@ -3,8 +3,7 @@ import { open } from 'sqlite';
 import sqlite3 from 'sqlite3';
 import { authenticateToken, authorizePermission } from '../auth';
 import { idGen } from '../utils/idGen';
-import { AuthenticatedRequest } from '../utils/types';
-import 'dotenv/config';
+import { AuthenticatedRequest } from '../types';
 
 const router = express.Router();
 
@@ -115,7 +114,6 @@ router.get('/diff/:docId/:version1/:version2', authenticateToken, authorizePermi
     return res.status(404).json({ message: 'Document version not found' });
   }
 
-  // Simple line-by-line diff algorithm
   const diff = require('diff');
   const differences = diff.diffLines(docVersion1.content, docVersion2.content);
   res.json(differences);
