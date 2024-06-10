@@ -1,0 +1,17 @@
+{
+  "preset": "ts-jest",
+  "testEnvironment": "node",
+  "testMatch": [
+    "**/tests/**/*.test.ts"
+  ],
+  "moduleFileExtensions": [
+    "ts",
+    "js"
+  ],
+  "setupFilesAfterEnv": [
+    "<rootDir>/tests/setup.ts"
+  ],
+  "moduleNameMapper": {
+    "^@/(.*)$": "<rootDir>/src/$1"
+  }
+}

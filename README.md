@@ -1,3 +1,3 @@
-# wiki-sqlite-frontend
+# wiki-react-sqlite-typescript
 
 Hello :D
